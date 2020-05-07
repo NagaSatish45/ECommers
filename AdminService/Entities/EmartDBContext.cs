@@ -1,7 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 
-
-namespace AdminService.Entities
+namespace AdminClientServices.Entities
 {
     public partial class EmartDBContext : DbContext
     {
@@ -15,6 +16,7 @@ namespace AdminService.Entities
         }
 
         public virtual DbSet<Category> Category { get; set; }
+        public virtual DbSet<Seller> Seller { get; set; }
         public virtual DbSet<SubCategory> SubCategory { get; set; }
         public virtual DbSet<Users> Users { get; set; }
 
@@ -23,7 +25,7 @@ namespace AdminService.Entities
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-              //  optionsBuilder.UseSqlServer("Server=LAPTOP-U61JE6J6\\SQLEXPRESS;Database=EmartDB;User Id=sa; Password=password;");
+                optionsBuilder.UseSqlServer("Server=LAPTOP-U61JE6J6\\SQLEXPRESS;Database=EmartDB;User Id=sa; Password=password;");
             }
         }
 
@@ -47,6 +49,25 @@ namespace AdminService.Entities
                     .IsRequired()
                     .HasColumnName("cname")
                     .HasMaxLength(20)
+                    .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<Seller>(entity =>
+            {
+                entity.ToTable("seller");
+
+                entity.Property(e => e.SellerId)
+                    .HasColumnName("sellerId")
+                    .ValueGeneratedNever();
+
+                entity.Property(e => e.KycAproval)
+                    .HasColumnName("kycAproval")
+                    .HasMaxLength(10)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.SellerName)
+                    .HasColumnName("sellerName")
+                    .HasMaxLength(50)
                     .IsUnicode(false);
             });
 

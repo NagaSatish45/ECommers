@@ -1,13 +1,13 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using AdminService.Extensions;
-using AdminService.Manager;
-using System.Threading.Tasks;
-using AdminService.Entities;
-using AdminService.Models;
 
-namespace AdminService.Controllers
+using System.Threading.Tasks;
+using AdminClientServices.Entities;
+using AdminClientServices.Models;
+using AdminClientServices.Manager;
+
+namespace AdminClientServices.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -31,15 +31,11 @@ namespace AdminService.Controllers
         [Route("AddCategory")]
         public async Task<IActionResult> Addcategory(Category obj)
         {
-            try
-            {
+            
                 await _manager.AddCategory(obj);
                 return Ok("Category Added");
-            }
-            catch(MyAppException EX)
-            {
-                throw EX;
-            }
+            throw new Exception("Exception while adding  the categories to the storage.");
+
         }
 
         //Adding Subcategory
@@ -50,15 +46,10 @@ namespace AdminService.Controllers
         [Route("AddSubCategory")]
         public async Task<IActionResult> Addsubcategory(SubCategory obj)
         {
-            try
-            {
                 await _manager.AddSubcategory(obj);
                 return Ok("SubCategory Added");
-            }
-            catch (MyAppException EX)
-            {
-                throw EX;
-            }
+            throw new Exception("Exception while adding the subcategory  to the storage.");
+
 
         }
         //Fetching Category by id
@@ -73,9 +64,10 @@ namespace AdminService.Controllers
                 //implementing logging
                 _logger.LogInformation("fetching categories by id");
                 return Ok(_manager.getCategoryid(cid));
-            
-          
-;        }
+            throw new Exception("Exception while fetching  the categories from the storage.");
+
+
+            ;        }
         //fetching sub category by id
         // <summary>
         // fetching a subcategory from the table in EmartDB database
@@ -120,16 +112,6 @@ namespace AdminService.Controllers
             return Ok(subcategory);
             throw new Exception("Exception while fetching all the subcategories from the storage.");
 
-        }
-        //Getting all users
-        // <summary>
-        // fetching all BUyers from the table in EmartDB database
-        // </summary>
-        [HttpGet]
-        [Route("GetAllBuyers")]
-        public IActionResult GetBuyers()
-        {
-            return Ok(_manager.getAllBuyers());
         }
         //Deleting category
         // <summary>

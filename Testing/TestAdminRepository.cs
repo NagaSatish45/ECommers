@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using AdminService.Repository;
+using AdminClientServices.Repository;
 using Moq;
 using NUnit.Framework;
-using AdminService.Entities;
-using AdminService.Extensions;
+using AdminClientServices.Entities;
 using System.Threading.Tasks;
 
-namespace Testing
+
+namespace TestAdminRepository
 {
     [TestFixture]
     class TestAdminRepository
@@ -31,57 +31,64 @@ namespace Testing
         //Testing Add Category Success
         [Test]
         [Description("get category")]
-        [TestCase(75,"electronics","electric gadgets")]
-        [TestCase(76, "clothings", "Wholesale")]
-        [TestCase(77, "HomeNeeds", "All home needies")]
+        [TestCase(203,"electronics","electric gadgets")]
+        [TestCase(204, "clothings", "Wholesale")]
+        [TestCase(205, "HomeNeeds", "All home needies")]
         public async Task TestAddCategory_success(int cid,string cname,string cdetails)
         {
             try
             {
                 await _repo.AddCategory(new Category()
                 {
-                    Cid = cid,
+                     Cid= cid,
                     Cname = cname,
-                    Cdetails = cdetails,
+                     Cdetails = cdetails,
                 });
                 var x = _repo.getCategoryid(cid);
                 Assert.NotNull(x);
             }
-            catch(MyAppException ex)
+            catch(Exception ex)
             {
-                throw ex;
+                Assert.Fail(ex.InnerException.Message);
             }
             
 
         }
+
+
+
+
+
+
         [Test]
         [Description("Add Subcategory")]
-        [TestCase(41,2,"def","pens",4)]
-        [TestCase(42,1, "lkj", "cello", 5)]
-        [TestCase(43,1, "dsa", "butterflow", 3)]
+        [TestCase(94,2,"def","pens",4)]
+        [TestCase(95,1, "lkj", "cello", 5)]
+        [TestCase(96,1, "dsa", "butterflow", 3)]
         public async Task TestAddsubcategory(int Subid,int Cid,string Sdetails,string Subname,int Gst)
         {
             try
             {
                 await _repo.AddSubcategory(new SubCategory()
                 {
-                    Subid = Subid,
-                    Cid = Cid,
-                    Sdetails = Sdetails,
-                    Subname = Subname,
-                    Gst = Gst,
+                      Subid= Subid,
+                      Cid= Cid,
+                     Sdetails = Sdetails,
+                    Subname= Subname,
+                     Gst= Gst,
 
 
                 });
                 var result = _repo.getsubcategorybyid(89);
                 Assert.NotNull(result);
             }
-            catch(MyAppException ex)
+            catch (Exception ex)
             {
-                throw ex;
+                Assert.Fail(ex.InnerException.Message);
             }
+
         }
-        
+
         [Test]
         [Description("Testing Getby id for category")]
         [TestCase(2)]
@@ -93,10 +100,11 @@ namespace Testing
                 Category result = _repo.getCategoryid(cid);
                 Assert.IsNotNull(result,"test passed");
             }
-            catch(MyAppException ex)
+            catch (Exception ex)
             {
-                throw ex;
+                Assert.Fail(ex.InnerException.Message);
             }
+
         }
 
         //Failure Test Cases
@@ -124,10 +132,11 @@ namespace Testing
                 var result = _repo.getsubcategorybyid(subid);
                 Assert.IsNotNull(result);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                throw ex;
+                Assert.Fail(ex.InnerException.Message);
             }
+
         }
         //Failure TestCase
         [Test]
@@ -141,9 +150,47 @@ namespace Testing
                 var result = _repo.getsubcategorybyid(subid);
                 Assert.IsNull(result);
             }
-            catch (MyAppException ex)
+            catch (Exception ex)
             {
-                throw ex;
+                Assert.Fail(ex.InnerException.Message);
+            }
+
+        }
+
+        //Testing Delete Category
+        [Test]
+        [Description("Testing delete by id for  category")]
+        [TestCase(203)]
+        [TestCase(204)]
+        public void TestDelete_Success(int cid)
+        {
+            try
+            {
+                _repo.DeletCategory(cid);
+                var result= _repo.getCategoryid(cid);
+                Assert.IsNull(result);
+            }
+            catch(Exception ex)
+            {
+                Assert.Fail(ex.InnerException.Message);
+            }
+        }
+        //Testing Delete subCategory
+        [Test]
+        [Description("Testing delete by id for  subcategory")]
+        [TestCase(95)]
+        [TestCase(96)]
+        public void TestDeleteSubcategory_Success(int subid)
+        {
+            try
+            {
+                _repo.DeletSubCategory(subid);
+                var result = _repo.getsubcategorybyid(subid);
+                Assert.IsNull(result);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail(ex.InnerException.Message);
             }
         }
 
@@ -157,9 +204,9 @@ namespace Testing
                 Assert.NotNull(result);
                 Assert.Greater(result.Count, 0);
             }
-            catch(MyAppException ex)
+            catch (Exception ex)
             {
-                throw ex;
+                Assert.Fail(ex.InnerException.Message);
             }
         }
 
@@ -174,30 +221,31 @@ namespace Testing
                 Assert.NotNull(result);
                 Assert.Greater(result.Count, 0);
             }
-            catch(MyAppException ex)
+            catch (Exception ex)
             {
-                throw ex;
+                Assert.Fail(ex.InnerException.Message);
             }
+
         }
-      // [TestCase)]  //setup teardown order
+        // [TestCase)]  //setup teardown order
         [Test]
         [Description("to test the mock data")]
         public void AddMockCategory()
         {
             try
             {
-                var cId = 112;
+                var cId = 113;
                 var cName = "books";
                 var CDetail = "all books";
-                var cat = new Category { Cid = cId, Cname = cName, Cdetails = CDetail };
+                var cat = new Category {   Cid = cId,  Cname= cName,  Cdetails = CDetail };
                 var mock = new Mock<IAdminRepository>();
                 mock.Setup(x => x.AddCategory(cat));
                 var result = mock.Setup(x => x.getCategoryid(cat.Cid));
                 Assert.NotNull(result);
             }
-            catch(MyAppException ex)
+            catch (Exception ex)
             {
-                throw ex;
+                Assert.Fail(ex.InnerException.Message);
             }
 
 
@@ -210,14 +258,14 @@ namespace Testing
             try
             {
                 Category cat = _repo.getCategoryid(2);
-                cat.Cdetails = "Buy the best";
+                cat.Cdetails = "Buy  best";
                 await _repo.updatecategory(cat);
                 Category cat1 = _repo.getCategoryid(2);
                 Assert.AreSame(cat, cat1);
             }
-            catch(MyAppException ex)
+            catch (Exception ex)
             {
-                throw ex;
+                Assert.Fail(ex.InnerException.Message);
             }
 
         }
@@ -242,9 +290,9 @@ namespace Testing
                
 
             }
-            catch(MyAppException ex)
+            catch (Exception ex)
             {
-                throw ex;
+                Assert.Fail(ex.InnerException.Message);
             }
         }
        

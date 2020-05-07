@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AdminService.Entities
+namespace AdminClientServices.Entities
 {
     public partial class Category
     {

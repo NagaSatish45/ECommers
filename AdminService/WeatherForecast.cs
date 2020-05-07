@@ -1,6 +1,6 @@
 using System;
 
-namespace AdminService
+namespace AdminClientServices
 {
     public class WeatherForecast
     {

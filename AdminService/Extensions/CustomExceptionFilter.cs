@@ -1,12 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Threading.Tasks;
 
-namespace AdminService.Extensions
+
+namespace AdminClientServices.Extensions
 {
    
     public class CustomExceptionFilter : IExceptionFilter
@@ -27,7 +25,7 @@ namespace AdminService.Extensions
                 message = "A server error occurred.";
                 status = HttpStatusCode.NotImplemented;
             }
-            else if (exceptionType == typeof(MyAppException))
+            else if (exceptionType == typeof(Exception))
             {
                 message = context.Exception.ToString();
                 status = HttpStatusCode.InternalServerError;

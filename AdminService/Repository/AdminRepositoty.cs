@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AdminService.Extensions;
-using AdminService.Entities;
-using AdminService.Models;
+using AdminClientServices.Extensions;
+using AdminClientServices.Entities;
+using AdminClientServices.Models;
 
-namespace AdminService.Repository
+namespace AdminClientServices.Repository
 {
     public class AdminRepositoty : IAdminRepository
     {
@@ -15,7 +15,7 @@ namespace AdminService.Repository
         {
             _context = context;
         }
-        public async Task<bool> AddCategory(category obj)
+        public async Task<bool> AddCategory(Category obj)
         {
             try
             {
@@ -32,7 +32,8 @@ namespace AdminService.Repository
 
         }
 
-        public async Task<bool> AddSubcategory(subcategory obj)
+
+        public async Task<bool> AddSubcategory(SubCategory obj)
         {
             try
             {
@@ -51,7 +52,7 @@ namespace AdminService.Repository
 
         public void DeletCategory(int cid)
         {
-            Entities.Category c = _context.Category.SingleOrDefault(e => e.Cid == cid);
+            Category c = _context.Category.SingleOrDefault(e => e.Cid == cid);
             _context.Remove(c);
             _context.SaveChanges();
         }
@@ -59,22 +60,15 @@ namespace AdminService.Repository
 
         public void DeletSubCategory(int subid)
         {
-            Entities.SubCategory c = _context.SubCategory.SingleOrDefault(e => e.Subid == subid);
+            SubCategory c = _context.SubCategory.SingleOrDefault(e => e.Subid == subid);
 
             _context.Remove(c);
             _context.SaveChanges();
 
         }
-
-        public List<Users> getAllBuyers()
+        public List<Category> GetAllCategories()
         {
-            List<Users> users = _context.Users.ToList();
-            return users;
-        }
-
-        public List<Entities.Category> GetAllCategories()
-        {
-            List<Entities.Category> c = _context.Category.ToList();
+            List<Category> c = _context.Category.ToList();
             return c;
            
         }
@@ -89,20 +83,20 @@ namespace AdminService.Repository
            
         }
 
-        public Entities.Category getCategoryid(int cid)
+        public Category getCategoryid(int cid)
         {
             return _context.Category.SingleOrDefault(e=>e.Cid==cid);
            
 
         }
 
-        public Entities.SubCategory getsubcategorybyid(int subid)
+        public SubCategory getsubcategorybyid(int subid)
         {
             return _context.SubCategory.Find(subid);
 
         }
 
-        public async Task<bool> updatecategory(Entities.Category obj)
+        public async Task<bool> updatecategory(Category obj)
         {
             try
             {
@@ -111,7 +105,7 @@ namespace AdminService.Repository
                     return true;
             
             }
-            catch (MyAppException ex)
+            catch (Exception ex)
             {
                
                 throw ex;
@@ -129,7 +123,7 @@ namespace AdminService.Repository
                     return true;
                
             }
-            catch (MyAppException ex)
+            catch (Exception ex)
             {
                 
                 throw ex;

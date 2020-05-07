@@ -9,15 +9,15 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using AdminService.Controllers;
-using AdminService.Repository;
+using AdminClientServices.Controllers;
+using AdminClientServices.Repository;
 using Microsoft.OpenApi.Models;
-using AdminService.Extensions;
+using AdminClientServices.Extensions;
 using Microsoft.EntityFrameworkCore;
-using AdminService.Manager;
-using AdminService.Entities;
+using AdminClientServices.Manager;
+using AdminClientServices.Entities;
 
-namespace AdminService
+namespace AdminClientServices
 {
     public class Startup
     {
@@ -58,8 +58,9 @@ namespace AdminService
 
 
             services.AddDbContext<EmartDBContext>();
-            services.AddTransient<IAdminRepository, AdminRepositoty>();
-            services.AddTransient<IManager, ManagerRepository>();
+            services.AddTransient<IAdminRepository,AdminRepositoty>();
+            services.AddTransient<IManager,ManagerRepository>();
+        //    services.AddTransient<AdminRepositoty,ManagerRepository>();
             services.AddControllers();
         }
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AdminService.Models
+namespace AdminClientServices.Models
 {
     public class users
     {

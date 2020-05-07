@@ -16,6 +16,7 @@ namespace AdminClientServices.Entities
         }
 
         public virtual DbSet<Category> Category { get; set; }
+        public virtual DbSet<Seller> Seller { get; set; }
         public virtual DbSet<SubCategory> SubCategory { get; set; }
         public virtual DbSet<Users> Users { get; set; }
 
@@ -48,6 +49,25 @@ namespace AdminClientServices.Entities
                     .IsRequired()
                     .HasColumnName("cname")
                     .HasMaxLength(20)
+                    .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<Seller>(entity =>
+            {
+                entity.ToTable("seller");
+
+                entity.Property(e => e.SellerId)
+                    .HasColumnName("sellerId")
+                    .ValueGeneratedNever();
+
+                entity.Property(e => e.KycAproval)
+                    .HasColumnName("kycAproval")
+                    .HasMaxLength(10)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.SellerName)
+                    .HasColumnName("sellerName")
+                    .HasMaxLength(50)
                     .IsUnicode(false);
             });
 

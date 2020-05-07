@@ -14,6 +14,21 @@
       ],
       "UpstreamPathTemplate": "/Admin/{catchAll}"
 
+    },
+    {
+      "DownstreamPathTemplate": "/api/AdminClient/{catchAll}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+
+          "Port": 55564
+        }
+
+
+      ],
+      "UpstreamPathTemplate": "/AdminClient/{catchAll}"
+
     }
   ],
   "GlobalConfiguration": {
