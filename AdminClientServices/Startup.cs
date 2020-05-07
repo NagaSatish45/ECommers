@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AdminClientServices.Entities;
-using AdminClientServices.Repositories;
-using AdminClientServices.Extensions;
+using AdminService.Entities;
+using AdminService.Repositories;
+using AdminService.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -14,9 +14,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using AdminClientServices.Manager;
+using AdminService.Manager;
 
-namespace AdminClientServices
+namespace AdminService
 {
     public class Startup
     {
@@ -55,7 +55,7 @@ namespace AdminClientServices
             });
             services.AddDbContext<EmartDBContext>();
             services.AddTransient<IAdminClientRepository, AdminClientRepositorycs>();
-            services.AddTransient<IAdminClientManager, AdminClientMagerRepository>();
+            services.AddTransient<IAdminClientManager, AdminClientMager>();
             services.AddControllers();
         }
 

@@ -5,11 +5,10 @@ using System.Threading.Tasks;
 
 namespace AdminService.Models
 {
-    public class category
+    public class seller
     {
-        public int cid;
-        public string cname;
-        public string cdetails;
-
+        int sellerId;
+        string sellerName;
+        string kycAproval;
     }
 }

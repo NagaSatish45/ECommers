@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AdminClientServices.Extensions;
-using AdminClientServices.Entities;
-using AdminClientServices.Models;
+using AdminService.Extensions;
+using AdminService.Entities;
+using AdminService.Models;
 
-namespace AdminClientServices.Repository
+namespace AdminService.Repository
 {
     public class AdminRepositoty : IAdminRepository
     {

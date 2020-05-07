@@ -1,10 +1,11 @@
-﻿using AdminClientServices.Entities;
+﻿using AdminService.Entities;
+using AdminService.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AdminClientServices.Manager
+namespace AdminService.Manager
 {
     public interface IAdminClientManager
     {

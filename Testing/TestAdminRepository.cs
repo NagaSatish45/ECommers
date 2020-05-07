@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using AdminClientServices.Repository;
+using AdminService.Repository;
 using Moq;
 using NUnit.Framework;
-using AdminClientServices.Entities;
+using AdminService.Entities;
 using System.Threading.Tasks;
 
 

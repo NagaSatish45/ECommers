@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace AdminClientServices.Entities
+namespace AdminService.Entities
 {
     public partial class EmartDBContext : DbContext
     {

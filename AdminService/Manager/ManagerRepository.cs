@@ -2,26 +2,26 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AdminClientServices.Repository;
-using AdminClientServices.Entities;
-using AdminClientServices.Models;
+using AdminService.Repository;
+using AdminService.Entities;
 
-namespace AdminClientServices.Manager
+
+namespace AdminService.Manager
 {
     public class ManagerRepository:IManager
     {
-        public readonly AdminRepositoty _manager;
+        public readonly IAdminRepository _repo;
 
-        public ManagerRepository(AdminRepositoty repo)
+        public ManagerRepository(IAdminRepository repo)
         {
-            _manager = repo;
+            _repo = repo;
         }
 
         public async Task<bool> AddCategory(Category obj)
         {
             try
             {
-                bool cat = await _manager.AddCategory(obj);
+                bool cat = await _repo.AddCategory(obj);
                 if (cat==true)
                     return true;
                 else
@@ -38,7 +38,7 @@ namespace AdminClientServices.Manager
         {
             try
             {
-                bool subcat = await _manager.AddSubcategory(obj);
+                bool subcat = await _repo.AddSubcategory(obj);
                 if(subcat==true)
                 {
                     return true;
@@ -56,13 +56,13 @@ namespace AdminClientServices.Manager
 
             public string DeletCategory(int cid)
              {
-            _manager.DeletCategory(cid);
+            _repo.DeletCategory(cid);
             return "Category deleted";
             }
 
         public string DeletSubCategory(int subid)
         {
-            _manager.DeletSubCategory(subid);
+            _repo.DeletSubCategory(subid);
             return "subcategory deleted";
         }
 
@@ -70,7 +70,7 @@ namespace AdminClientServices.Manager
         {
             try
             {
-                List<Category> cat = _manager.GetAllCategories().ToList();
+                List<Category> cat = _repo.GetAllCategories().ToList();
                 return cat;
             }
             catch(Exception ex)
@@ -83,7 +83,7 @@ namespace AdminClientServices.Manager
         {
             try
             {
-                List<SubCategory> subcat = _manager.GetAllSubcategories().ToList();
+                List<SubCategory> subcat = _repo.GetAllSubcategories().ToList();
                 if (subcat.Count != 0)
                     return subcat;
                 else
@@ -99,7 +99,7 @@ namespace AdminClientServices.Manager
         {
             try
             {
-                Category cat= _manager.getCategoryid(cid);
+                Category cat= _repo.getCategoryid(cid);
                 if (cat!= null)
                 {
                     return cat;
@@ -118,7 +118,7 @@ namespace AdminClientServices.Manager
         {
             try
             {
-                SubCategory subcat = _manager.getsubcategorybyid(subid);
+                SubCategory subcat = _repo.getsubcategorybyid(subid);
                 if (subcat != null)
                 {
                     return subcat;
@@ -136,7 +136,7 @@ namespace AdminClientServices.Manager
         {
             try
             {
-                bool cat = await _manager.updatecategory(obj);
+                bool cat = await _repo.updatecategory(obj);
                 if (cat==true)
                 {
                     return true;
@@ -154,7 +154,7 @@ namespace AdminClientServices.Manager
         {
             try
             {
-                bool subcat = await _manager.updatesubcategory(obj);
+                bool subcat = await _repo.updatesubcategory(obj);
                 if (subcat == true)
                 {
                     return true;

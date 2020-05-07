@@ -9,7 +9,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using NLog.Web;
 
-namespace AdminClientServices
+namespace AdminService
 {
     public class Program
     {

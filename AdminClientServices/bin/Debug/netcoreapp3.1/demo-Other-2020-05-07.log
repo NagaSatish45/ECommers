@@ -55,3 +55,6 @@
 2020-05-07 12:33:05.2952||INFO|AdminClientServices.Controllers.AdminClientController|fetching  all subcategories |url: http://localhost/api/AdminClient/GetAllSellers|action: getSellers
 2020-05-07 12:33:45.3363||INFO|AdminClientServices.Controllers.AdminClientController|fetching  all sellers |url: http://localhost/api/AdminClient/GetAllUsers|action: getUsers
 2020-05-07 12:33:53.6119||INFO|AdminClientServices.Controllers.AdminClientController|fetching  all subcategories |url: http://localhost/api/AdminClient/GetAllSellers|action: getSellers
+2020-05-07 14:45:49.7994||DEBUG|AdminClientServices.Program|init main function |url: |action: 
+2020-05-07 14:46:08.0779||INFO|AdminClientServices.Controllers.AdminClientController|fetching  all subcategories |url: http://localhost/api/AdminClient/GetAllSellers|action: getSellers
+2020-05-07 20:49:51.9265||DEBUG|AdminClientServices.Program|init main function |url: |action: 

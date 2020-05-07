@@ -1,36 +1,37 @@
-﻿using AdminService.Entities;
-using AdminService.Manager;
-using AdminService.Repositories;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using AdminService.Manager;
+using AdminService.Repositories;
+using AdminService.Entities;
 
 namespace TestingAdminClientService
 {
     [TestFixture]
-    class TestingAdminClients_repository
+    class TestAdminClientManager
     {
-        AdminClientRepositorycs _repo;
+        AdminClientMager _manager;
+
+        
         [SetUp]
         public void setup()
         {
-            _repo = new AdminClientRepositorycs(new EmartDBContext());
+            _manager = new AdminClientMager(new AdminClientRepositorycs(new EmartDBContext()));
 
         }
         [TearDown]
         public void Teardown()
         {
-            _repo = null;
+            _manager = null;
         }
-
         [Test]
         [Description("Get All Sellers")]
         public void TestGetAllSellers()
         {
             try
             {
-                var result = _repo.getAllSellers();
+                var result = _manager.getAllSellers();
                 Assert.NotNull(result);
                 Assert.Greater(result.Count, 0);
             }
@@ -45,7 +46,7 @@ namespace TestingAdminClientService
         {
             try
             {
-                var result = _repo.getAllUsers();
+                var result = _manager.getAllUsers();
                 Assert.NotNull(result);
                 Assert.Greater(result.Count, 0);
             }
@@ -54,7 +55,6 @@ namespace TestingAdminClientService
                 Assert.Fail(ex.InnerException.Message);
             }
         }
-
 
 
     }

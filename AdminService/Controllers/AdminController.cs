@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 using System.Threading.Tasks;
-using AdminClientServices.Entities;
-using AdminClientServices.Models;
-using AdminClientServices.Manager;
+using AdminService.Entities;
+using AdminService.Models;
+using AdminService.Manager;
 
-namespace AdminClientServices.Controllers
+namespace AdminService.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

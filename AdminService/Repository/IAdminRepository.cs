@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using AdminClientServices.Entities;
-using AdminClientServices.Models;
+using AdminService.Entities;
+using AdminService.Models;
 
-namespace AdminClientServices.Repository
+namespace AdminService.Repository
 {
     public interface IAdminRepository
     {

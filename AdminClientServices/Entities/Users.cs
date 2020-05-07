@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AdminClientServices.Entities
+namespace AdminService.Entities
 {
     public partial class Users
     {

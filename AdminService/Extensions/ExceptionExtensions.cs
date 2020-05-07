@@ -6,7 +6,7 @@ using System;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace AdminClientServices.Extensions
+namespace AdminService.Extensions
 {
     public static class ExceptionExtensions
     {

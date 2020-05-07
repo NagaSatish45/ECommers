@@ -1,24 +1,25 @@
-﻿using AdminClientServices.Entities;
-using AdminClientServices.Repositories;
+﻿using AdminService.Entities;
+using AdminService.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using AdminClientServices.Extensions;
+using AdminService.Extensions;
+using AdminService.Models;
 
-namespace AdminClientServices.Manager
+namespace AdminService.Manager
 {
-    public class AdminClientMagerRepository : IAdminClientManager
+    public class AdminClientMager : IAdminClientManager
     {
-        private readonly IAdminClientRepository _manager;
-        public AdminClientMagerRepository(IAdminClientRepository manager)
+        private readonly IAdminClientRepository _repo;
+        public AdminClientMager(IAdminClientRepository repo)
         {
-            _manager = manager;
+            _repo = repo;
         }
         public List<Seller> getAllSellers()
         {
             try
             {
-                List<Seller> seller = _manager.getAllSellers().ToList();
+                List<Seller> seller = _repo.getAllSellers().ToList();
                 return seller;
             }
             catch(Exception ex)
@@ -32,7 +33,7 @@ namespace AdminClientServices.Manager
         {
             try
             {
-                List<Users> user = _manager.getAllUsers().ToList();
+                List<Users> user = _repo.getAllUsers().ToList();
                 return user;
             }
             catch(Exception ex)

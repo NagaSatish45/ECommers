@@ -6,7 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace AdminClientServices.Extensions
+namespace AdminService.Extensions
 {
     public class CustomExceptionFilter: IExceptionFilter
     {

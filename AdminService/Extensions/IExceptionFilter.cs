@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace AdminClientServices.Extensions
+namespace AdminService.Extensions
 {
     interface IExceptionFilter: IFilterMetadata
     {

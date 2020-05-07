@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AdminClientServices.Extensions
+namespace AdminService.Extensions
 {
     public interface IExceptionFilter: IFilterMetadata
     {

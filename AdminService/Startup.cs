@@ -9,15 +9,15 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using AdminClientServices.Controllers;
-using AdminClientServices.Repository;
+using AdminService.Controllers;
+using AdminService.Repository;
 using Microsoft.OpenApi.Models;
-using AdminClientServices.Extensions;
+using AdminService.Extensions;
 using Microsoft.EntityFrameworkCore;
-using AdminClientServices.Manager;
-using AdminClientServices.Entities;
+using AdminService.Manager;
+using AdminService.Entities;
 
-namespace AdminClientServices
+namespace AdminService
 {
     public class Startup
     {

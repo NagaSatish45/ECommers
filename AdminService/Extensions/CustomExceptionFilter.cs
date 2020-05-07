@@ -4,7 +4,7 @@ using System;
 using System.Net;
 
 
-namespace AdminClientServices.Extensions
+namespace AdminService.Extensions
 {
    
     public class CustomExceptionFilter : IExceptionFilter

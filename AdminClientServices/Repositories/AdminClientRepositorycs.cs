@@ -1,10 +1,10 @@
-﻿using AdminClientServices.Entities;
+﻿using AdminService.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AdminClientServices.Repositories
+namespace AdminService.Repositories
 {
     public class AdminClientRepositorycs : IAdminClientRepository
     {

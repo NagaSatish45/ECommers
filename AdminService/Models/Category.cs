@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AdminClientServices.Models
+namespace AdminService.Models
 {
     public class category
     {

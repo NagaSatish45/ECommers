@@ -2,9 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using AdminClientServices.Manager;
-using AdminClientServices.Repository;
-using AdminClientServices.Entities;
+using AdminService.Manager;
+using AdminService.Repository;
+using AdminService.Entities;
 using System.Threading.Tasks;
 using Moq;
 
